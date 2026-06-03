@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibz Interiors | Premium Residential & Commercial Interior Designing</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #b38b4d; /* Elegant Gold/Bronze Accent */
+            --dark: #1a1a1a;    /* Rich Charcoal */
+            --light: #f9f9f9;   /* Off-white */
+            --white: #ffffff;
+            --text-muted: #666;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #96733b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 15px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #dddddd;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text blockquote {
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- SERVICES SECTION --- */
+        #services {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card ul li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* --- WHY CHOOSE US --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* --- PROCESS SECTION --- */
+        #process {
+            background-color: var(--light);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+
+        .process-step {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .step-num {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .process-step h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- PORTFOLIO GALLERY --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            height: 250px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* --- CTA BANNER --- */
+        .cta-banner {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            color: #ccc;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-banner .hero-btns {
+            justify-content: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark);
+            color: #aaa;
+            padding: 60px 0 20px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+            margin-top: 8px;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .contact-links a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+        }
+
+        /* --- RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">Vibz<span>Interiors</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="https://wa.me/918489383035?text=Hi%20Vibz%20Interiors,%20I%20would%20like%20to%20get%20a%20quote%20for%20my%20space." class="btn btn-primary nav-cta" target="_blank">Get Free Quote</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Turning Spaces into Statements.</h1>
+            <p>Premium residential and commercial interior designing tailored to your lifestyle and budget.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/918489383035?text=Hi%20Vibz%20Interiors,%20I%20would%20like%20to%20get%20a%20quote%20for%20my%20space." class="btn btn-primary" target="_blank">Let's Design Your Space</a>
+                <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <blockquote>"Design is not just what it looks like and feels like. Design is how it works."</blockquote>
+                <p>At <strong>Vibz Interiors</strong>, we believe that every space has a story waiting to be told. Based in India, we are a team of passionate interior designers, architects, and project managers dedicated to crafting functional, aesthetic, and breathing spaces.</p>
+                <p>Whether it's a cozy apartment, a luxury villa, or a vibrant corporate office, we bring your vision to life with precision and flair.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="Beautiful Interior Design Layout">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="subtitle">End-to-end interior design solutions under one roof</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Residential Design</h3>
+                    <ul>
+                        <li>Modular Kitchens</li>
+                        <li>Luxury Living Rooms</li>
+                        <li>Space-saving Bedrooms</li>
+                        <li>Wardrobes & Storage</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Commercial Design</h3>
+                    <ul>
+                        <li>Corporate Offices</li>
+                        <li>Retail Stores & Cafes</li>
+                        <li>False Ceilings & Lighting</li>
+                        <li>Executive Cabins</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Turnkey Solutions</h3>
+                    <ul>
+                        <li>Concept to Execution</li>
+                        <li>Material Sourcing</li>
+                        <li>Custom Furniture</li>
+                        <li>Quality Supervision</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="container">
+        <h2 class="section-title">Why Choose Vibz Interiors?</h2>
+        <p class="subtitle">Commitment to quality and unmatched professionalism</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <h3>Customized Designs</h3>
+                <p>No cookie-cutter templates. Your space will uniquely reflect you.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <h3>Budget-Optimized</h3>
+                <p>High-end looks without hidden costs. Transparent pricing.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⏱️</div>
+                <h3>Timely Delivery</h3>
+                <p>We respect your time. We strictly adhere to our project timelines.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛠️</div>
+                <h3>5-Year Warranty</h3>
+                <p>Peace of mind with premium material selection & execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">How We Work</h2>
+            <p class="subtitle">Our systematic process to realize your dream space</p>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h3>Consultation 💬</h3>
+                    <p>We discuss ideas, needs, and budgets over a coffee or virtual call.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h3>Concept & 3D 📐</h3>
+                    <p>We generate stunning layout blueprints and immersive 3D renders.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h3>Execution 🔨</h3>
+                    <p>Our expert craftsmen step in to bring plans to structural reality.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <h3>Handover 🔑</h3>
+                    <p>Step into your beautifully transformed, move-in-ready space!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="container">
+        <h2 class="section-title">Our Portfolio</h2>
+        <p class="subtitle">A glimpse of some of our recent transformations</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1616137422495-1e9e47e217c2?auto=format&fit=crop&w=500&q=80" alt="Modern Living Room">
+                <div class="portfolio-overlay">Modern Living Rooms</div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=500&q=80" alt="Modular Kitchen">
+                <div class="portfolio-overlay">Modular Kitchens</div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Executive Corporate Office">
+                <div class="portfolio-overlay">Corporate Offices</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner" id="contact">
+        <div class="container" style="padding: 0;">
+            <h2>Ready to transform your space?</h2>
+            <p>Don't wait for the "perfect time." Let’s start planning your dream interior today. Get a personalized, no-obligation quote right now.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/918489383035?text=Hi%20Vibz%20Interiors,%20I%20would%20like%20to%20get%20a%20quote%20for%20my%20space." class="btn btn-primary" target="_blank">Chat Instantly on WhatsApp</a>
+                <a href="tel:+918489383035" class="btn btn-outline">Call Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid" style="padding: 0 0 40px 0;">
+            <div class="footer-col">
+                <a href="#" class="logo" style="margin-bottom: 15px; display: inline-block;">Vibz<span>Interiors</span></a>
+                <p>Crafting Spaces, Inspiring Life. We build premium functional spaces across structural and aesthetic paradigms.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-links">
+                <h3>Contact Info</h3>
+                <a href="https://wa.me/918489383035" target="_blank"><strong>Mobile/WA:</strong> +91-8489383035</a>
+                <a href="mailto:vibzinteriors@gmail.com"><strong>Email:</strong> vibzinteriors@gmail.com</a>
+                <a href="#"><strong>Web:</strong> vibzinteriors.com</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Vibz Interiors. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a nav link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
